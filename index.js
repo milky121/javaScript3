@@ -108,3 +108,21 @@ request
 .catch(() => {
     console.log("promise rejected");
 });
+
+
+
+// promise chain
+
+savetoDbPromise("apna college")
+.then(() => {
+    console.log("promise1 resolved");
+    return savetoDbPromise("hello world");
+})
+
+.then(() => {
+    console.log("promise2 resolved");
+})
+
+.catch(() =>{
+    console.log("some promise rejected");
+});
