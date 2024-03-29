@@ -42,6 +42,51 @@ console.log("hello.......");
 //         });
 //     });
 // });
+
+h1 = document.querySelector("h1");
+function changeColor(color, delay) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            h1.style.color = color;
+            resolve("color changed!!");
+        }, delay);
+    });
+}
+
+changeColor("red" , 1000)
+.then(() => {
+    console.log("red color was changed");
+    return changeColor("orange" , 1000);
+})
+.then(() => {
+    console.log("orange color was changed");
+    return changeColor("purple", 1000);
+})
+.then(() => {
+    console.log("purple color was changed");
+    return changeColor("green", 1000);
+})
+.then(() => {
+    console.log("green color was changed");
+    return changeColor("pink", 1000);
+})
+
+.then(() => {
+    console.log("pink color was changed");
+    return changeColor("blue", 1000);
+})
+.then(() => {
+    console.log("blue color was changed");
+    return changeColor("yellow", 1000);
+})
+.then(() => {
+    console.log("yellow color was changed");
+    
+});
+
+
+
+
 // setTimeout(()=>{
 //     h1.style.color = "red";
 // },1000);
@@ -126,3 +171,23 @@ savetoDbPromise("apna college")
 .catch(() =>{
     console.log("some promise rejected");
 });
+
+
+//  promises are rejected and resolved with some data(valid reults or errors)
+
+savetoDbPromise("apnacollege")
+  .then((result) => {
+    console.log("result: ", result);
+    console.log("promise1 resolved");
+    return savetoDbPromise("hello world");
+  })
+
+  .then((result) =>{
+    console.log("result: ", result);
+    console.log("promise2 resolved");
+  })
+
+  .catch((error) => {
+    console.log("error : ", error);
+    console.log("some promise rejected");
+  }); 
