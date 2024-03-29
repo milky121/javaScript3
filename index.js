@@ -97,3 +97,14 @@ function savetoDb(data)  {
     });
    
 }
+
+
+let request = savetoDbPromise("apnacollege");
+request
+.then(() => {
+    console.log("promise resolved");
+})
+
+.catch(() => {
+    console.log("promise rejected");
+});
