@@ -57,28 +57,43 @@ console.log("hello.......");
 // promises  
 
 
-function savetoDb(data , success, failure)  {
-    let internetSpeed = Math.floor(Math.random() * 10) + 1 ;
-    if (internetSpeed > 4) {
-        success();
-    } else{
-        failure();
-    }
-}
+// function savetoDb(data , success, failure)  {
+//     let internetSpeed = Math.floor(Math.random() * 10) + 1 ;
+//     if (internetSpeed > 4) {
+//         success();
+//     } else{
+//         failure();
+//     }
+// }
 
-savetoDb("apna college" , () =>{
-    console.log(" success: your data was saved : ");
-    savetoDb(
-        "hello world",
-        () =>{
-            console.log("success2: data2 saved");
-        },
-        () =>{
-            console.log("failure2 : weak connection");
+// savetoDb("apna college" , () =>{
+//     console.log(" success: your data was saved : ");
+//     savetoDb(
+//         "hello world",
+//         () =>{
+//             console.log("success2: data2 saved");
+//         },
+//         () =>{
+//             console.log("failure2 : weak connection");
+//         }
+//     );
+// },
+// () => {
+//     console.log("weak connection , data not saved");
+// }
+// );
+
+
+// promises execution that will return some object
+
+function savetoDb(data)  {
+    return new Promise ((success , failure)  => {
+        let internetSpeed = Math.floor(Math.random() * 10) + 1 ;
+        if (internetSpeed > 4) {
+            success("success: data was saved");
+        } else{
+            failure("failure: weak connection");
         }
-    );
-},
-() => {
-    console.log("weak connection , data not saved");
+    });
+   
 }
-);
